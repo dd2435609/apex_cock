@@ -40,6 +40,7 @@ float maxdistance = 40.0f;			 	// aim assist maximum range in meters
 
 
 
+
 int m_iHealth = 0x043c; 					//RecvTable.DT_Player.m_iHealth
 int m_iTeamNum = 0x044c; 					//RecvTable.DT_BaseEntity.m_iTeamNum
 int m_iViewAngles = 0x25ac - 0x14; 				//m_ammoPoolCapacity - 0x14
@@ -51,17 +52,18 @@ int m_vecAbsOrigin = 0x014c; 					//DataMap.CBaseViewModel.m_vecAbsOrigin
 int m_playerData = 0x16c0; 					//RecvTable.DT_WeaponX.m_playerData
 int m_lifeState = 0x0798; 					//RecvTable.DT_Player.m_lifeState
 int m_itemId = 0x1648; 						//RecvTable.DT_PropSurvival.m_customScriptInt
-int m_gameMode = 0x01f21a70; 					//mp_gamemode
-int m_localplayer = 0x01ee8b70 + 0x8;				//.?AVC_GameMovement@@ + 0x8)
-int m_sensitivity = 0x01ed53d0; 				//mouse_sensitivity
+int m_gameMode = 0x01f21bb0; 					//mp_gamemode
+int m_localplayer = 0x01ee8cb0 + 0x8;				//.?AVC_GameMovement@@ + 0x8)
+int m_sensitivity = 0x01ed5510; 				//mouse_sensitivity
 int m_bulletSpeed = 0x1f18; 					//CWeaponX!m_flProjectileSpeed
-int m_bulletGravity = m_bulletSpeed + 0x8; //CWeaponX!m_flProjectileSpeed + 0x8
+int m_bulletGravity = m_bulletSpeed + 0x8; 			//CWeaponX!m_flProjectileSpeed + 0x8
 int m_muzzle = 0x1f48; 						//CPlayer!camera_origin
  
  
  
-#define in_Attack 0x076780e8					//[Buttons] -> in_attack
+#define in_Attack 0x076782c8					//[Buttons] -> in_attack
 #define m_bleedoutState 0x2740
+#define OFFSET_YAW 0x22b4 					//m_currentFramePlayer.m_ammoPoolCount
 
 
 
