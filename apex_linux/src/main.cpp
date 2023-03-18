@@ -52,16 +52,16 @@ int m_vecAbsOrigin = 0x014c; 					//DataMap.CBaseViewModel.m_vecAbsOrigin
 int m_playerData = 0x16c0; 					//RecvTable.DT_WeaponX.m_playerData
 int m_lifeState = 0x0798; 					//RecvTable.DT_Player.m_lifeState
 int m_itemId = 0x1648; 						//RecvTable.DT_PropSurvival.m_customScriptInt
-int m_gameMode = 0x01f21bb0; 					//mp_gamemode
-int m_localplayer = 0x01ee8cb0 + 0x8;				//.?AVC_GameMovement@@ + 0x8)
-int m_sensitivity = 0x01ed5510; 				//mouse_sensitivity
-int m_bulletSpeed = 0x1f18; 					//CWeaponX!m_flProjectileSpeed
+int m_gameMode = 0x01f21c50; 					//mp_gamemode
+int m_localplayer = 0x01ee8d50 + 0x8;				//.?AVC_GameMovement@@ + 0x8)
+int m_sensitivity = 0x01ed55b0; 				//mouse_sensitivity
+int m_bulletSpeed = 0x1f18; 					//CWeaponX!m_flProjectileSpeed		or		WeaponSettingsMeta.base + WeaponSettings.projectile_launch_speed
 int m_bulletGravity = m_bulletSpeed + 0x8; 			//CWeaponX!m_flProjectileSpeed + 0x8
 int m_muzzle = 0x1f48; 						//CPlayer!camera_origin
  
  
  
-#define in_Attack 0x076782c8					//[Buttons] -> in_attack
+#define in_Attack 0x07678368					//[Buttons] -> in_attack
 #define m_bleedoutState 0x2740
 #define OFFSET_YAW 0x22b4 					//m_currentFramePlayer.m_ammoPoolCount
 
@@ -862,52 +862,53 @@ int main(void)
 				{
 				//weapons
 				case 27:  // VK-47 Flatline
-				case 77:  // R-301 Carbine
-				case 47:  // r99
+				case 73:  // R-301 Carbine
+				case 43:  // r99
 				case 97:  //wingman
-
+				case 7:	  //L-Star
+ 
 				//shields
-				case 175: // Evo Shield 2
-				case 176: // Evo Shield 3
-				case 177: // Evo Shield 4
-				case 170: // Shield 2
-				case 171: // Shield 3
-				case 172: // Shield 4
-
+				//case 175: // Evo Shield 2
+				case 180: // Evo Shield 3
+				case 181: // Evo Shield 4
+				//case 170: // Shield 2
+				case 175: // Shield 3
+				case 176: // Shield 4
+ 
 				//helmets
-				case 166: // Helmet 2
-				case 167: // Helmet 3
-				case 168: // Helmet 4
-
+				//case 166: // Helmet 2
+				case 171: // Helmet 3
+				case 172: // Helmet 4
+ 
 				//backpacks
-				case 184: // Backpack 2
-				case 185: // Backpack 3
-				case 186: // Backpack 4
-
+				case 188: // Backpack 2
+				case 189: // Backpack 3
+				case 190: // Backpack 4
+ 
 				//attachments
-				case 222: //Extended Sniper Mag 3
-				case 223: //Extended Sniper Mag 4
-				case 210: //Extended Light Mag 3
-				case 211: //Extended Light Mag 4
-				case 218: //Energy Magazine 3
-				case 219: //Energy Magazine 4
-				case 214: //Heavy Magazine 3
-				case 215: //Heavy Magazine 4
-				case 203: //Barrel Stabilizer 3
-				case 204: //Barrel Stabilizer 4
-				case 232: //Sniper Stock 3
-				case 226: //Shotgun Bolt 3
-
+				//case 222: //Extended Sniper Mag 3
+				//case 223: //Extended Sniper Mag 4
+				case 214: //Extended Light Mag 3
+				case 215: //Extended Light Mag 4
+				case 222: //Energy Magazine 3
+				case 223: //Energy Magazine 4
+				case 218: //Heavy Magazine 3
+				case 219: //Heavy Magazine 4
+				//case 203: //Barrel Stabilizer 3
+				//case 204: //Barrel Stabilizer 4
+				//case 232: //Sniper Stock 3
+				case 230: //Shotgun Bolt 3
+ 
 				//scopes
-				case 191: //1x HCOG Classic
-				case 192: //2x HCOG Bruiser
-				case 197: //6x sniper
-				case 199: //4x-8x Variable Sniper
-
+				case 195: //1x HCOG Classic
+				case 196: //2x HCOG Bruiser
+				//case 197: //6x sniper
+				//case 199: //4x-8x Variable Sniper
+ 
 				//miscellaneous
-				case 182: //Knockdown Shield 4
-				case 163: //Shield Battery
-				case 235: //Skullpiercer
+				case 186: //Knockdown Shield 4
+				case 167: //Shield Battery
+				case 240: //Skullpiercer
 				
 					rx_write_i32(r5apex, entity + 0x02c0, 1363184265);
 					break;
