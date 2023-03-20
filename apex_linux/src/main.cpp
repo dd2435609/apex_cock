@@ -10,7 +10,6 @@
 #include <thread>
 #define AIMKEY 108				// keys: 107 = mouse1, 108 = mouse2, 109 = mouse3, 110 = mouse4, 111 = mouse5, 80 = LAlt
 #define AIMFOV_ADS 7.0f			//10 = agressive, 7 = moderated, 3 = safe
-#define AIMFOV_HIPFIRE 10.0f			//15 = agressive, 10 = moderated, 5 = safe
 #define AIMSMOOTH 15.0f				//8 = agressive, 15 = moderated, 20 = safe					
 #define AIMBOT_ENABLED 1				
 std::chrono::milliseconds sleep(20); 			
@@ -310,7 +309,6 @@ int main(void)
 	while (1)
 	{
 		float fovAds = AIMFOV_ADS;
-		float fovHipfire = AIMFOV_HIPFIRE;
 		if (!rx_process_exists(r5apex))
 		{
 			break;
@@ -465,8 +463,6 @@ int main(void)
 			{
 				fl_sensitivity = (zoom_fov / 90.0f) * fl_sensitivity;
 				fovAds = AIMFOV_ADS;
-			}else{
-				fovAds = fovHipfire;
 			}
 			if (fov <= fovAds)
 			{
