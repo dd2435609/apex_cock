@@ -9,7 +9,8 @@
 #include <chrono>
 #include <thread>
 #define AIMKEY 108				// keys: 107 = mouse1, 108 = mouse2, 109 = mouse3, 110 = mouse4, 111 = mouse5, 80 = LAlt
-#define AIMFOV_ADS 7.0f			//10 = agressive, 7 = moderated, 3 = safe
+#define AIMFOV_ADS 10.0f			//10 = agressive, 7 = moderated, 3 = safe
+#define AIMFOV_HIPFIRE 10.0f			//15 = agressive, 10 = moderated, 5 = safe
 #define AIMSMOOTH 15.0f				//8 = agressive, 15 = moderated, 20 = safe					
 #define AIMBOT_ENABLED 1				
 std::chrono::milliseconds sleep(20); 			
@@ -309,6 +310,7 @@ int main(void)
 	while (1)
 	{
 		float fovAds = AIMFOV_ADS;
+		float fovHipfire = AIMFOV_HIPFIRE;
 		if (!rx_process_exists(r5apex))
 		{
 			break;
@@ -408,10 +410,70 @@ int main(void)
 					target_entity = entity;
 					lastvis_aim[i] = last_visible;
 					rx_write_float(r5apex, entity + 0x3B4, 8000.0f); 
+					if (rx_read_i32(r5apex, entity + 0x0170) <= 10)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 0.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 100.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 0.0f);
+					}
+					else if (rx_read_i32(r5apex, entity + 0x0170) <= 50)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 255.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 255.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 255.0f);
+					}
+					else if (rx_read_i32(r5apex, entity + 0x0170) <= 75)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 0.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 117.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 209.0f);
+					}
+					else if (rx_read_i32(r5apex, entity + 0x0170) <= 100)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 126.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 0.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 255.0f);
+					}
+					else if (rx_read_i32(r5apex, entity + 0x0170) <= 125)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 255.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 0.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 0.0f);
+					}
 				}
 				else
 				{
-					rx_write_float(r5apex, entity + 0x3B4, 8000.0f); 
+					rx_write_float(r5apex, entity + 0x3B4, 8000.0f);
+					if (rx_read_i32(r5apex, entity + 0x0170) <= 10)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 0.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 100.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 0.0f);
+					}
+					else if (rx_read_i32(r5apex, entity + 0x0170) <= 50)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 255.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 255.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 255.0f);
+					}
+					else if (rx_read_i32(r5apex, entity + 0x0170) <= 75)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 0.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 117.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 209.0f);
+					}
+					else if (rx_read_i32(r5apex, entity + 0x0170) <= 100)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 126.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 0.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 255.0f);
+					}
+					else if (rx_read_i32(r5apex, entity + 0x0170) <= 125)
+					{
+						rx_write_float(r5apex, entity + 0x1D0, 255.0f);
+						rx_write_float(r5apex, entity + 0x1D4, 0.0f);
+						rx_write_float(r5apex, entity + 0x1D8, 0.0f);
+					}
 				}
 			}
 		}
@@ -463,6 +525,8 @@ int main(void)
 			{
 				fl_sensitivity = (zoom_fov / 90.0f) * fl_sensitivity;
 				fovAds = AIMFOV_ADS;
+			}else{
+				fovAds = fovHipfire;
 			}
 			if (fov <= fovAds)
 			{
