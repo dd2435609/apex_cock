@@ -10,10 +10,10 @@
 #include <thread>
 #define AIMKEY 108				// keys: 107 = mouse1, 108 = mouse2, 109 = mouse3, 110 = mouse4, 111 = mouse5, 80 = LAlt
 #define AIMFOV_ADS 10.0f			//10 = agressive, 7 = moderated, 3 = safe
-#define AIMFOV_HIPFIRE 10.0f			//15 = agressive, 10 = moderated, 5 = safe
-#define AIMSMOOTH 15.0f				//8 = agressive, 15 = moderated, 20 = safe					
+#define AIMFOV_HIPFIRE 5.0f			//15 = agressive, 10 = moderated, 5 = safe
+#define AIMSMOOTH 25.0f				//8 = agressive, 15 = moderated, 20 = safe					
 #define AIMBOT_ENABLED 1				
-std::chrono::milliseconds sleep(20); 			
+std::chrono::milliseconds sleep(25); 			
 float maxdistance = 100.0f;			 	// aim assist maximum range in meters
 int m_iHealth = 0x043c; 			        //RecvTable.DT_Player.m_iHealth
 int m_iTeamNum = 0x044c; 				//RecvTable.DT_BaseEntity.m_iTeamNum
