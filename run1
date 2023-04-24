@@ -1,9 +1,2 @@
-cd T_TApeCock
-./BuildAndRun.sh
-
-cd ApexCockkkk
-g++ Main.cpp -lX11
-sudo ./a.out
-
 cd apex_cock
 ./run
